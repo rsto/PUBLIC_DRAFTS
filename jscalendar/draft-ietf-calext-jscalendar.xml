@@ -1039,9 +1039,9 @@
                                 <list style="symbols">
                                     <t>
                                         <spanx style="strong">yearly</spanx>:
-                                        every second from midnight on the 1st January
-                                        (inclusive) to midnight the following 1st January
-                                        (exclusive)
+                                        every second from midnight on the 1st day of the year
+                                        (inclusive) to midnight the 1st day of the following year
+                                        (exclusive).
                                     </t>
                                     <t>
                                         <spanx style="strong">monthly</spanx>: every second from
@@ -1084,11 +1084,16 @@
                                 the following semantics:
                                 <list style="symbols">
                                     <t><spanx style="strong">byMonth</spanx>: the date-time is
-                                        in the given month.
+                                        in the given month. If the given month is invalid for
+                                        this year and rscale, then apply the skip rule to it and
+                                        check the candidate against the resulting month value.
                                     </t>
                                     <t><spanx style="strong">byMonthDay</spanx>: the date-time
                                         is on the given day of the month. Negative numbers mean
-                                        the nth last day of the month.
+                                        the nth last day of the month. If the given day of month
+                                        is invalid for this year, month and rscale, then apply the
+                                        skip rule to it and check the candidate against the
+                                        resulting day and month value.
                                     </t>
                                     <t><spanx style="strong">byDay</spanx>: the date-time is on
                                         the given day of the week. If the day is prefixed by a
@@ -1098,8 +1103,9 @@
                                         occurrence within that period.
                                     </t>
                                     <t><spanx style="strong">byYearDay</spanx>: the date-time is
-                                        on the nth day of year. Negative numbers mean the nth
-                                        last day of the year.
+                                        on the nth day of year, taking into account the number of
+                                        days of the year in the recurrence rule's rscale. Negative
+                                        numbers mean the nth last day of the year.
                                     </t>
                                     <t><spanx style="strong">byWeekNo</spanx>: the date-time is
                                         in the nth week of the year. Negative numbers mean the
